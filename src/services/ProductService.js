@@ -2,12 +2,15 @@ import axios from "axios";
 
 export default class ProductService {
   getProductsSmall() {
-    return axios
-      .get(
-        "http://ec2-18-219-230-0.us-east-2.compute.amazonaws.com/company/AllData/"
-      )
-      .then((res) => res.data.data)
-      .catch((e) => console.log(e));
+    return (
+      axios
+        //      .get("assets/demo/data/products-small.json")
+        .get(
+          "http://ec2-18-219-230-0.us-east-2.compute.amazonaws.com/company/AllData/"
+        )
+        .then((res) => res.data.allCampus)
+        .catch((e) => console.log(e))
+    );
   }
 
   getProducts() {

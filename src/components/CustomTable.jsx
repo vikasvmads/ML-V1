@@ -7,7 +7,7 @@ import { MultiSelect } from "primereact/multiselect";
 export const CustomTable = () => {
   const columns = [
     { field: "name", header: "Name" },
-    // { field: "category", header: "Category" },
+    { field: "category", header: "Category" },
     { field: "price", header: "Price" },
     { field: "quantity", header: "Quantity" },
     { field: "inventoryStatus", header: "Inventory Status" },
@@ -19,7 +19,7 @@ export const CustomTable = () => {
   const productService = new ProductService();
 
   useEffect(() => {
-    productService.getProductsSmall().then((data) => setProducts(data));
+    productService.getProductsSmall().then((data) => setProducts(data.filter((d,i) => i < 16)));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const onColumnToggle = (event) => {
@@ -49,7 +49,7 @@ export const CustomTable = () => {
         field={col.field}
         header={col.header}
         sortable
-        // filter
+       // filter
       />
     );
   });
